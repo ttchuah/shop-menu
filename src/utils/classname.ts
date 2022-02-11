@@ -8,12 +8,12 @@ export type ClassnamesTypes =
   | null
   | Array<string | undefined | null | false | CSSClassMapping>;
 
-const normalizeClass = (name: any, defaultVal: string = '') => {
+const normalizeClass = (name: any, defaultVal: string = "") => {
   if (
     name === undefined ||
-    name === 'undefined' ||
+    name === "undefined" ||
     name === null ||
-    name === 'null'
+    name === "null"
   ) {
     return defaultVal;
   }
@@ -22,8 +22,8 @@ const normalizeClass = (name: any, defaultVal: string = '') => {
 
 const isObjectType = (input: any): boolean =>
   input &&
-  typeof input !== 'string' &&
-  typeof input === 'object' &&
+  typeof input !== "string" &&
+  typeof input === "object" &&
   !Array.isArray(input);
 
 /**
@@ -35,7 +35,7 @@ const isObjectType = (input: any): boolean =>
  */
 export const classname = (
   classNames: ClassnamesTypes,
-  defaultVal: string = ''
+  defaultVal: string = "",
 ): string => {
   if (Array.isArray(classNames)) {
     const test = classNames
@@ -46,7 +46,7 @@ export const classname = (
         return normalizeClass(name, defaultVal);
       })
       .filter((name) => name)
-      .join(' ');
+      .join(" ");
     return test.trim();
   }
 
@@ -63,7 +63,7 @@ export const handleObjectType = (inputObjt: CSSClassMapping): string => {
     }
   });
 
-  return cssClasses.join(' ').trim();
+  return cssClasses.join(" ").trim();
 };
 
 /**
@@ -76,5 +76,5 @@ export const handleObjectType = (inputObjt: CSSClassMapping): string => {
 export const classIf = (
   names: string | string[],
   condition: boolean,
-  defaultVal: string = ''
+  defaultVal: string = "",
 ) => (!!condition ? classname(names) : defaultVal);

@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from "react";
 
-type Props = {
+interface Props {
   className?: string;
   onClick?: (e?: any, internalLinkHandler?: any) => void;
   internalLinkHandler?: (...args: any[]) => void;
@@ -12,7 +12,7 @@ type Props = {
   extraAttributes?: Record<string, any>;
   to?: string;
   params?: string[];
-};
+}
 
 const Link: React.FC<Props> = ({
   className,
@@ -29,7 +29,7 @@ const Link: React.FC<Props> = ({
   params,
 }) => {
   const log = (...args: any[]) => {
-    console.log('Log: ', args);
+    console.log("Log: ", args);
   };
   return (
     <a
@@ -39,8 +39,8 @@ const Link: React.FC<Props> = ({
       }
       aria-label={ariaLabel}
       href={href}
-      target={targetSelf ? '_self' : '_blank'}
-      rel={rel || (external ? 'external' : '')}
+      target={targetSelf ? "_self" : "_blank"}
+      rel={rel || (external ? "external" : "")}
       {...extraAttributes}
     >
       {children}

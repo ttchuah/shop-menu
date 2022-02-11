@@ -1,0 +1,12 @@
+{
+  "extends": "tslint:recommended",
+  "rules": {
+    "no-console": [false],
+    "interface-name": [false],
+    "max-classes-per-file": [false],
+    "object-literal-sort-keys": [false]
+  },
+  "linterOptions": {
+    "exclude": ["**/node_modules/**", "**/dist/**"]
+  }
+}

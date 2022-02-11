@@ -1,8 +1,8 @@
-import React, { FC, useState, useEffect } from 'react';
-import { useMediaQuery } from 'react-responsive';
-import classname from 'classnames';
-import { Category, CategoryGroup } from '../../models';
-import './style.scss';
+import classname from "classnames";
+import React, { FC, useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import { Category, CategoryGroup } from "../../models";
+import "./style.scss";
 
 export interface MenuProps {
   items: CategoryGroup[] | Category[];
@@ -18,9 +18,9 @@ export interface MenuProps {
 }
 
 function isCategoryGroup(
-  toBeDetermined: CategoryGroup | Category
+  toBeDetermined: CategoryGroup | Category,
 ): toBeDetermined is CategoryGroup {
-  if ('groupTitle' in toBeDetermined) {
+  if ("groupTitle" in toBeDetermined) {
     return true;
   } else {
     return false;
@@ -30,38 +30,39 @@ function isCategoryGroup(
 const Menu: FC<MenuProps> = ({
   items,
   isL1 = true,
-  heading = '',
+  heading = "",
   active,
   close,
 }) => {
-  const [selectedItem, setSelectedItem] = useState('');
+  const [selectedItem, setSelectedItem] = useState("");
 
   // If this menu is no longer active (i.e. no longer needs to be shown), then
   // deselect all menu items.  (So that the next time menu becomes visible, it's
   // back in its original state with no selected menu items)
   useEffect(() => {
     if (!active) {
-      setSelectedItem('');
+      setSelectedItem("");
     }
   }, [active]);
 
   // Handle click of "go back" button.
   const onClose = (): void => {
-    setSelectedItem('');
+    setSelectedItem("");
   };
 
   const onClickShopAll = (): void => {
-    console.log('');
+    console.log("");
   };
 
   const onSelectCategory = (category: Category) => {
     // Activate this menu item if it was inactive prior to being selected.
-    // Otherwise deactivate this menu item it was active prior to being selected. (This will cause the submenu to collapse)
+    // Otherwise deactivate this menu item it was active prior to being selected.
+    // (This will cause the submenu to collapse)
     if (category.childItems) {
       const isCategorySelected = category.ctaText === selectedItem;
-      setSelectedItem(isCategorySelected ? '' : category.ctaText);
+      setSelectedItem(isCategorySelected ? "" : category.ctaText);
     } else {
-      alert('go to PLP');
+      alert("go to PLP");
     }
   };
 
@@ -72,8 +73,8 @@ const Menu: FC<MenuProps> = ({
       <React.Fragment>
         <div>
           <button
-            className={classname('menu-link', {
-              'menu-link--active': isCategorySelected,
+            className={classname("menu-link", {
+              "menu-link--active": isCategorySelected,
             })}
             onClick={() => onSelectCategory(category)}
           >
@@ -93,26 +94,26 @@ const Menu: FC<MenuProps> = ({
     );
   };
 
-  let cssClass = '';
+  let cssClass = "";
   if (isL1) {
     cssClass = classname(
-      'menu',
-      { 'menu--child-active': !!selectedItem },
+      "menu",
+      { "menu--child-active": !!selectedItem },
       {
-        'menu--hidden': !active,
-      }
+        "menu--hidden": !active,
+      },
     );
   } else {
     cssClass = classname(
-      'menu-inner',
-      { 'menu-inner--active': active },
+      "menu-inner",
+      { "menu-inner--active": active },
       {
-        'menu-inner--child-active': !!selectedItem,
-      }
+        "menu-inner--child-active": !!selectedItem,
+      },
     );
   }
   const isDesktop = useMediaQuery({
-    query: '(min-width: 1025px)',
+    query: "(min-width: 1025px)",
   });
 
   return (
@@ -129,8 +130,8 @@ const Menu: FC<MenuProps> = ({
 
                 {
                   // Print out the list of categories for this group.
-                  item.childItems.map((category: Category) =>
-                    renderCategory(category)
+                  item.childItems?.map((category: Category) =>
+                    renderCategory(category),
                   )
                 }
               </React.Fragment>

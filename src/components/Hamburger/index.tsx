@@ -1,7 +1,7 @@
 // import { Button, Menu } from "@bbyca/bbyca-components";
-import * as React from 'react';
+import * as React from "react";
 // import * as styles from "./style.css";
-import './style.scss';
+import "./style.scss";
 
 interface Props {
   onClick: () => void;
@@ -11,7 +11,7 @@ interface Props {
 
 export const Hamburger = (props: Props) => (
   <button
-    className={`Hamburger ${props?.className || ''}`}
+    className={`Hamburger ${props?.className || ""}`}
     onClick={props.onClick}
     aria-label={props.label}
   >

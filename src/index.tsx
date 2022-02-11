@@ -1,31 +1,31 @@
-import * as React from 'react';
-import { render } from 'react-dom';
-import { useMediaQuery } from 'react-responsive';
+import * as React from "react";
+import { render } from "react-dom";
+import { useMediaQuery } from "react-responsive";
 
-import Menu from './components/Menu';
-import Link from './components/Link';
+import Link from "./components/Link";
+import Menu from "./components/Menu";
 
-import './style.css';
-import { CategoryGroup } from './models';
-import RootMenu from './components/RootMenu';
-import Hamburger from './components/Hamburger';
-import classname from 'classnames';
+import classname from "classnames";
+import Hamburger from "./components/Hamburger";
+import RootMenu from "./components/RootMenu";
+import { CategoryGroup } from "./models";
+import "./style.css";
 
 const groups: CategoryGroup[] = [
   {
     groupTitle: "What's Popular",
     childItems: [
       {
-        ctaText: 'Top Deals',
-        eventType: 'category',
-        eventId: '11962778',
-        seoText: 'top-deals',
+        ctaText: "Top Deals",
+        eventType: "category",
+        eventId: "11962778",
+        seoText: "top-deals",
         childItems: [
           {
-            ctaText: 'Laptops on sale',
-            eventType: 'category',
-            eventId: '11962778',
-            seoText: 'laptops-on-sale',
+            ctaText: "Laptops on sale",
+            eventType: "category",
+            eventId: "11962778",
+            seoText: "laptops-on-sale",
             childItems: [],
           },
         ],
@@ -33,35 +33,35 @@ const groups: CategoryGroup[] = [
     ],
   },
   {
-    groupTitle: 'Shop By Category',
+    groupTitle: "Shop By Category",
     childItems: [
       {
-        ctaText: 'Computers And Tablets',
-        eventType: 'category',
-        eventId: '11962778',
-        seoText: 'computers-tablets',
+        ctaText: "Computers And Tablets",
+        eventType: "category",
+        eventId: "11962778",
+        seoText: "computers-tablets",
         childItems: [
           {
-            ctaText: 'Laptops & Macbboks',
-            eventType: 'category',
-            eventId: '11962778',
-            seoText: 'laptops-macbooks',
+            ctaText: "Laptops & Macbboks",
+            eventType: "category",
+            eventId: "11962778",
+            seoText: "laptops-macbooks",
             childItems: [
               {
-                ctaText: 'Macbook Pro',
-                eventType: 'category',
-                eventId: '11962778',
-                seoText: 'macbook-pro',
+                ctaText: "Macbook Pro",
+                eventType: "category",
+                eventId: "11962778",
+                seoText: "macbook-pro",
               },
             ],
           },
         ],
       },
       {
-        ctaText: 'Computers Accessories',
-        eventType: 'category',
-        eventId: '11962778',
-        seoText: 'computers-accessories',
+        ctaText: "Computers Accessories",
+        eventType: "category",
+        eventId: "11962778",
+        seoText: "computers-accessories",
         childItems: [
           // ...
         ],
@@ -72,8 +72,8 @@ const groups: CategoryGroup[] = [
 
 const rootMenu = [
   {
-    content: (props) => <Menu {...props} items={groups} />,
-    id: 'shop',
+    content: (props: any) => <Menu {...props} items={groups} />,
+    id: "shop",
     label: (
       <span data-automation="x-shop">
         {/* {intl.formatMessage({ id: messages.shopHeading.id })} */}
@@ -82,8 +82,8 @@ const rootMenu = [
     ),
   },
   {
-    content: (props) => <Menu {...props} items={groups} />,
-    id: 'brands',
+    content: (props: any) => <Menu {...props} items={groups} />,
+    id: "brands",
     label: (
       <span data-automation="x-brands">
         {/* {intl.formatMessage({ id: messages.brandsHeading.id })} */}
@@ -92,22 +92,22 @@ const rootMenu = [
     ),
   },
   {
-    id: 'deals',
+    id: "deals",
     label: (
       <span data-automation="x-deals">
         {/* {intl.formatMessage({ id: messages.dealsHeading.id })} */}
         Deals
       </span>
     ),
-    content: (props) => <Menu {...props} items={groups} />,
+    content: (props: any) => <Menu {...props} items={groups} />,
   },
   {
-    id: 'services',
+    id: "services",
     label: <span data-automation="x-deals">Services</span>,
-    content: (props) => <Menu {...props} items={groups} />,
+    content: (props: any) => <Menu {...props} items={groups} />,
   },
   {
-    id: 'order-status',
+    id: "order-status",
     label: (
       <Link
         href={`/orders`}
@@ -116,7 +116,7 @@ const rootMenu = [
         onClick={(e) => {
           // eventToSessionStorage('Order Status');
         }}
-        className={'noIcon'}
+        className={"noIcon"}
       >
         <span data-automation="x-order-status">
           {/* {intl.formatMessage({
@@ -129,16 +129,16 @@ const rootMenu = [
     mobileOnly: true,
   },
   {
-    id: 'blog',
+    id: "blog",
     label: (
       <Link
         external
         // href={intl.formatMessage({
         //   ...messages.blogHref,
         // })}
-        href={'http://blog.bestbuy.ca'}
+        href={"http://blog.bestbuy.ca"}
         key="blog"
-        className={'noIcon'}
+        className={"noIcon"}
       >
         <span data-automation="x-blog">
           {/* {intl.formatMessage({
@@ -151,17 +151,17 @@ const rootMenu = [
     mobileOnly: true,
   },
   {
-    id: 'bbyForBusiness',
+    id: "bbyForBusiness",
     label: (
       <Link
         to="bbyForBusiness"
-        params={['test']}
+        params={["test"]}
         external={false}
         onClick={(e) => {
           // props.onServicesClick(); ??
         }}
         targetSelf={false}
-        className={'noIcon'}
+        className={"noIcon"}
       >
         <span data-automation="x-bby-business">
           {/* {intl.formatMessage({
@@ -177,12 +177,12 @@ const rootMenu = [
 
 const App: React.FC = () => {
   const [visible, setVisible] = React.useState(false);
-  const [selectedItem, selectItem] = React.useState<string>('');
+  const [selectedItem, selectItem] = React.useState<string>("");
   const [rootMenuState, setRootMenuState] = React.useState(false);
 
   // a substitute for redux-responsive
   const isDesktop = useMediaQuery({
-    query: '(min-width: 1025px)',
+    query: "(min-width: 1025px)",
   });
 
   return (
@@ -192,7 +192,7 @@ const App: React.FC = () => {
         <Hamburger onClick={() => setRootMenuState(!rootMenuState)} />
         <div
           // className={classname([styles.MenuWrapper, { [styles.open]: this.state.open }])}
-          className={classname(['MenuWrapper', { ['open']: rootMenuState }])}
+          className={classname(["MenuWrapper", { ["open"]: rootMenuState }])}
         >
           <RootMenu
             menuItems={rootMenu}
@@ -206,4 +206,4 @@ const App: React.FC = () => {
   );
 };
 
-render(<App />, document.getElementById('root'));
+render(<App />, document.getElementById("root"));

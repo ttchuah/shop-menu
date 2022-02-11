@@ -31,7 +31,7 @@ $menuWidths: (
 .menu {
   position: absolute;
   top: 0;
-  height: max-content;
+  height: 100%;
   // border: 2px solid red;
   background-color: var(--light-grey);
   left: 0;
@@ -49,6 +49,7 @@ $menuWidths: (
   }
   @include for-size('medium') {
     top: 100%;
+    height: max-content;
   }
 
   &-link {
@@ -74,12 +75,13 @@ $menuWidths: (
   &-inner {
     // border: 2px dashed black;
     // border-radius: 4px;
+
     box-sizing: border-box;
     position: absolute;
     top: 0;
     height: 100%;
     background-color: var(--light-grey);
-    left: 0;
+    left: 100%;
     display: none;
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
     @include menuWidth;
@@ -87,9 +89,15 @@ $menuWidths: (
     &--child-active {
       left: 0;
     }
+    &--active {
+      display: block;
+    }
 
     @include for-size('small') {
       border-right: 1px solid var(--light-grey);
+      &--active {
+        left: 0;
+      }
     }
 
     @include for-size('medium') {
